@@ -7,7 +7,8 @@ use std::{
 fn main() {
     let start_range: u32 = 1;
     let end_range: u32 = 100;
-    let secret_num = rand::thread_rng().gen_range(start_range, end_range + 1);
+    let secret_num = rand::thread_rng().gen_range(start_range..=end_range);
+
     println!("Guess a number between {} and {}", start_range, end_range);
 
     loop {
@@ -16,7 +17,7 @@ fn main() {
         io::stdout().flush().expect("ISSUE: flushing stout!");
         io::stdin()
             .read_line(&mut guess)
-            .expect("issue reading line!");
+            .expect("ISSUE: reading line!");
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
@@ -26,11 +27,13 @@ fn main() {
             }
         };
 
+        println!("You guessed: {}", guess);
+
         match guess.cmp(&secret_num) {
             Ordering::Less => println!("INCORRECT: too small"),
             Ordering::Greater => println!("INCORRECT: too big"),
             Ordering::Equal => {
-                println!("CORRECT: perfect match!");
+                println!("CORRECT!");
                 break;
             }
         }
