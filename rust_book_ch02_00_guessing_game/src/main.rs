@@ -27,7 +27,7 @@ fn main() {
             }
         };
 
-        println!("You guessed: {}", guess);
+        // println!("You guessed: {}", guess);
 
         match guess.cmp(&secret_num) {
             Ordering::Less => println!("INCORRECT: too small"),
