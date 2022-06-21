@@ -16,6 +16,7 @@ fn main() {
 
     ////////////////////////////////////////////
     println!("Example 2: matching single digit primes...");
+    match_single_digit_prime_under_10(0);
     match_single_digit_prime_under_10(1);
     match_single_digit_prime_under_10(2);
     match_single_digit_prime_under_10(3);
@@ -66,6 +67,7 @@ fn plus_one(num: Option<i32>) -> Option<i32> {
 
 fn match_single_digit_prime_under_10(num: u8) {
     match num {
+        0 => println!("{}: no", num),
         1 => println!("{}: yes", num),
         2 => println!("{}: no", num),
         3 => println!("{}: yes", num),
